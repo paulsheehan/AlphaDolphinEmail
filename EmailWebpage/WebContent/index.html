@@ -20,27 +20,33 @@
 						<h4 class="modal-title">Fill your user name and password:</h4>
 				</div>
 				<div class="modal-body">
-				<form>
+				
+				<!-- Login Form -->
+				<form action="FrontController" method="post">
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon">User Name:</div>
 								<input type="text" class="form-control" ng-model="user_name">
+								<input type="hidden" name="action" value="UserLogin" />
 							</div>
 						</div>	
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon">Password:</div>
 								<input type="text" class="form-control" ng-model="user_password">
+								<input type="submit" class="btn btn-success" ng-click="error = 1">Login</button>
 							</div>
 						</div>
 				</form>		
+				
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-success" ng-click="error = 1">Login</button>
+					<button type="submit" class="btn btn-success" ng-click="error = 1">Login</button>
 					<div class="alert alert-danger text-center" ng-show="error == 1">
 						<a href="#" class="close" ng-click="error = 0">&times;</a>
 						<strong>Sorry!</strong> Your user name or password are incorrect!
-					</div>
+					</div>  
+					
 					<p class="text-center"><u><a href="#" data-toggle="modal" data-target="#myModal3">Forgot my password</a></u></p>
 				</div>
 			</div>

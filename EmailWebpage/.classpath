@@ -15,5 +15,8 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="C:/Users/pshee/OneDrive/Documents/JAR files/javax.mail.jar" sourcepath="C:/Users/pshee/OneDrive/Documents/JAR files/javax.mail.jar"/>
 	<classpathentry kind="lib" path="C:/Users/pshee/OneDrive/Documents/JAR files/activation-1.1.1.jar" sourcepath="C:/Users/pshee/OneDrive/Documents/JAR files/activation-1.1.1.jar"/>
+	<classpathentry kind="lib" path="libs/jstl-api-1.2.jar"/>
+	<classpathentry kind="lib" path="libs/jstl-impl-1.2.jar"/>
+	<classpathentry kind="lib" path="libs/mysql-connector-java-5.1.18-bin(3).jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
