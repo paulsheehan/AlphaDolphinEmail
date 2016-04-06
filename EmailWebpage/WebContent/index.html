@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Alpha Dolphin</title>
+    <link rel="stylesheet" href="https://bootswatch.com/paper/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="indexStyle.css">
+</head>
+<body ng-app="myApp">
+	<!-- First Modal for Login In -->
+	<div id="myModal" class="modal fade"  tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+		
+		<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Fill your user name and password:</h4>
+				</div>
+				<div class="modal-body">
+				<form>
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon">User Name:</div>
+								<input type="text" class="form-control" ng-model="user_name">
+							</div>
+						</div>	
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon">Password:</div>
+								<input type="text" class="form-control" ng-model="user_password">
+							</div>
+						</div>
+				</form>		
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success" ng-click="error = 1">Login</button>
+					<div class="alert alert-danger text-center" ng-show="error == 1">
+						<a href="#" class="close" ng-click="error = 0">&times;</a>
+						<strong>Sorry!</strong> Your user name or password are incorrect!
+					</div>
+					<p class="text-center"><u><a href="#" data-toggle="modal" data-target="#myModal3">Forgot my password</a></u></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Second Modal for Sign Up -->
+	<div id="myModal2" class="modal fade"  tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+
+		<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button2" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Create Your Account: {{ fullname }}</h4>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon">Full Name</div>
+								<input type="text" class="form-control" ng-model="fullname">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon">E-mail</div>
+								<input type="text" class="form-control" ng-model="email">
+								<div class="input-group-addon">@dolphins.ie</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon">Password</div>
+								<input type="text" class="form-control" ng-model="password">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon">Confirming Password</div>
+								<input type="text" class="form-control" ng-model="password2">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon">Question</div>
+								<select class="form-control">
+									<option selected>Who is your favorite movie character?</option>
+									<option>What is the name of your first teacher?</option>
+									<option>What is the name of your first pet?</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon">Answer</div>
+								<input type="text" class="form-control" ng-model="answer">
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button id="createButton" type="button" class="btn btn-primary" ng-click="success = 1">Create</button>
+					<div class="alert alert-success" ng-show="success == 1">
+						<a href="#" class="close" ng-click="success = 0">&times;</a>
+						<strong>Success!</strong> Congratulation for being an Alpha Dolphins user member!
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Third Modal for Recovering Password-->
+	<div id="myModal3" class="modal fade"  tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+		
+		<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Please, answer your secret question:</h4>
+				</div>
+				<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon">Question</div>
+								<select class="form-control">
+									<option selected>Who is your favorite movie character?</option>
+									<option>What is the name of your first teacher?</option>
+									<option>What is the name of your first pet?</option>
+								</select>
+							</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon">Answer</div>
+								<input type="text" class="form-control" ng-model="answer">
+						</div>
+					</div>
+				</form>
+				<div class="modal-footer">
+					<button id="createButton" type="button" class="btn btn-primary" ng-click="success = 1">OK</button>
+					<div class="alert alert-success" ng-show="success == 1">
+						<a href="#" class="close" ng-click="success = 0">&times;</a>
+						<strong>Success!</strong> You will be redirect in seconds to your e-mail page!
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>			
+				
+	<!------- Beginning of the web page ------>					
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="images/logo.png"/> <b>Dolphin</b> Your e-mail platform</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><button class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#myModal">Sign in</button></li>
+                    <li><button class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#myModal2">Sign up</button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="front-bg">
+        <div class="center-screen">
+            <h1>EXPLORE</h1>
+            <h2>a new way of sending and receiving e-mails</h2>
+        </div>
+    </div>
+    <div class="row features">
+        <div class="col-md-4">
+            <i class="fa fa-user-plus"></i>
+            <h3>Feature 1</h3>
+            <p>Description of feature 1</p>
+        </div>
+        <div class="col-md-4">
+            <i class="fa fa-paper-plane"></i>
+            <h3>Feature 2</h3>
+            <p>Description of feature 2</p>
+        </div>
+        <div class="col-md-4">
+            <i class="fa fa-map-o"></i>
+            <h3>Feature 3</h3>
+            <p>Description of feature 3</p>
+        </div>
+    </div>
+    <div class="row footer">
+        <div class="col-md-4">
+            <h4>Contact us</h4>
+            <p>DIT Kevin Street - Dublin, Ireland</p>
+            <p><b>infodolphin@alpha.ie</b> - +353 8 123 456 789</p>
+        </div>
+        <div class="col-md-4 social">
+            <h4>Connect with us!</h4>
+            <p><a href="#"><i class="fa fa-facebook"></i>Facebook</a></p>
+            <p><a href="#"><i class="fa fa-twitter"></i>Twitter</a></p>
+            <p><a href="#"><i class="fa fa-youtube"></i>YouTube</a></p>
+        </div>
+        <div class="col-md-4">
+            <h4>Copyright</h4>
+            <p>Developed by Dublin Institute of Technology students.</p>
+            <p>All rights reserved.</p>
+        </div>
+    </div>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+<script>
+		angular.module('myApp', []);
+</script>
+</body>
+</html>
