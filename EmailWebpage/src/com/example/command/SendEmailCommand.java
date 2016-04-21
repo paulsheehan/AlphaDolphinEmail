@@ -1,18 +1,29 @@
 package com.example.command;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Properties;
 
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 public class SendEmailCommand implements Command {
 	
@@ -25,15 +36,23 @@ public class SendEmailCommand implements Command {
 	      final String password = "postmanDolphin";//change accordingly
 	      
 	      // Recipient's email ID needs to be mentioned.
-	      String to = "p.sheehan94@gmail.com";
-	      String subject = "Testing Subject";
-	      String content = "Hello, this is sample for to check send email using JavaMailAPI ";
-	      
-	      HttpSession hSesh = request.getSession();
-	      
-	      //hSesh.getAttribute(arg0)
-	      
-	      
+	      String receipient = request.getParameter("receipient");
+	      String subject = request.getParameter("subject");;
+	      String content = request.getParameter("content");;
+
+//	      Part filePart;
+//	      try {
+//			filePart = request.getPart("file");
+//		} catch (IllegalStateException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		} catch (IOException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		} catch (ServletException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
 	      
 	      //Emails get sent through Gmails SMTP server
 	      String host = "smtp.gmail.com";
@@ -63,17 +82,38 @@ public class SendEmailCommand implements Command {
 	     	
 	     	   // Set To: header field of the header.
 	     	   message.setRecipients(Message.RecipientType.TO,
-	                    InternetAddress.parse(to));
+	                    InternetAddress.parse(receipient));
 	     	
 	     	   // Set Subject: header field
 	     	   message.setSubject(subject);
 	     	
+//	     	  // Create the message part 
+//	           BodyPart messageBodyPart = new MimeBodyPart();
+//	           
 	     	   // Now set the actual message
 	     	   message.setText(content);
+//	     	   
+//	     	  // Create a multipart message
+//	           Multipart multipart = new MimeMultipart();
+//
+//	           // Set text message part
+//	           multipart.addBodyPart(messageBodyPart);
+
+	           // Part two is attachment
+//	           messageBodyPart = new MimeBodyPart();
+//	           String filename = filePart.getName();
+//	           DataSource source = new FileDataSource((File) filePart);
+//	           messageBodyPart.setDataHandler(new DataHandler(source));
+//	           messageBodyPart.setFileName(filename);
+//	           multipart.addBodyPart(messageBodyPart);
+
+//	           // Send the complete message parts
+//	           message.setContent(multipart );
 
 	     	   // Send message
 	     	   Transport.send(message);
 
+	     	   
 	     	   System.out.println("Sent message successfully....");
 
 	           } catch (MessagingException e) {
@@ -81,7 +121,7 @@ public class SendEmailCommand implements Command {
 	           }
 	        
 	        //Directs to another page after the email is sent
-	        String forwardToJsp = new String("MainPage.html");
+	        String forwardToJsp = new String("/viewInbox.jsp");
 	        return forwardToJsp;
 	}
 	

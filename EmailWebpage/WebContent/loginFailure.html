@@ -10,13 +10,10 @@
 </head>
 <body ng-app="myApp">
 	<!-- First Modal for Login In -->
-	
 	<div id="myModal" class="modal fade"  tabindex="-1" role="dialog">
 		<div class="modal-dialog">
 		
 		<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h4 class="modal-title">Fill your user name and password:</h4>
 				</div>
@@ -25,7 +22,7 @@
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon">Email:</div>
-								<input type="email" class="form-control" name="email" ng-model="user_name">
+								<input type="text" class="form-control" name="email" ng-model="user_name">
 							</div>
 						</div>	
 						<div class="form-group">
@@ -38,16 +35,13 @@
 				</form>		
 				</div>
 				<div class="modal-footer">
-					<button type="submit" form="loginForm" class="btn btn-success" ng-click="error = 1">Login</button>
-					<div class="alert alert-danger text-center" ng-show="error == 1">
-						<a href="#" class="close" ng-click="error = 0">&times;</a>
+					<button type="submit" form="loginForm" class="btn btn-success">Login</button>
+						<a href="#" class="close">&times;</a>
 						<strong>Sorry!</strong> Your user name or password are incorrect!
-					</div>
 					<p class="text-center"><u><a href="#" data-toggle="modal" data-target="#myModal3">Forgot my password</a></u></p>
 				</div>
 			</div>
-		</div>
-	</div>
+			
 	<!-- Second Modal for Sign Up -->
 	<div id="myModal2" class="modal fade"  tabindex="-1" role="dialog">
 		<div class="modal-dialog">
@@ -59,31 +53,30 @@
 						<h4 class="modal-title">Create Your Account: {{ fullname }}</h4>
 				</div>
 				<div class="modal-body">
-					<form action="FrontController" method="post" id="register">
-					<input type="hidden" name="action" value="CreateUser">
+					<form>
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon">Full Name</div>
-								<input type="text" name="fullname" class="form-control" ng-model="fullname">
+								<input type="text" class="form-control" ng-model="fullname">
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon">E-mail</div>
-								<input type="email" class="form-control" name="userEmail" ng-model="email">
+								<input type="text" class="form-control" ng-model="email">
 								<div class="input-group-addon">@dolphins.ie</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon">Password</div>
-								<input type="password" class="form-control" name="password" ng-model="password">
+								<input type="text" class="form-control" ng-model="password">
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon">Confirming Password</div>
-								<input type="text" class="form-control" name="passwordConfirm" ng-model="password2">
+								<input type="text" class="form-control" ng-model="password2">
 							</div>
 						</div>
 						<div class="form-group">
@@ -99,13 +92,13 @@
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon">Answer</div>
-								<input type="text" name="answer" class="form-control" ng-model="answer">
+								<input type="text" class="form-control" ng-model="answer">
 							</div>
 						</div>
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button id="createButton" type="submit" form="register" class="btn btn-primary" ng-click="success = 1">Create</button>
+					<button id="createButton" type="button" class="btn btn-primary" ng-click="success = 1">Create</button>
 					<div class="alert alert-success" ng-show="success == 1">
 						<a href="#" class="close" ng-click="success = 0">&times;</a>
 						<strong>Success!</strong> Congratulation for being an Alpha Dolphins user member!
@@ -169,8 +162,8 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><button class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#myModal">Enter Your Mailbox</button></li>
-                    <li><button class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#myModal2">Create Account</button></li>
+                    <li><button class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#myModal">Sign in</button></li>
+                    <li><button class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#myModal2">Sign up</button></li>
                 </ul>
             </div>
         </div>
@@ -184,18 +177,18 @@
     <div class="row features">
         <div class="col-md-4">
             <i class="fa fa-user-plus"></i>
-            <h3>Create Account</h3>
-            <p>Simple and easy to create and manage your e-mail account.</p>
+            <h3>Feature 1</h3>
+            <p>Description of feature 1</p>
         </div>
         <div class="col-md-4">
             <i class="fa fa-paper-plane"></i>
-            <h3>Sending and Receiving E-mails</h3>
-            <p>Write and receive e-mails fast over the world.</p>
+            <h3>Feature 2</h3>
+            <p>Description of feature 2</p>
         </div>
         <div class="col-md-4">
-            <i class="fa fa-cog"></i>
-            <h3>Settings Account</h3>
-            <p>It is quickly and seamless to handle with your account in the way you prefer.</p>
+            <i class="fa fa-map-o"></i>
+            <h3>Feature 3</h3>
+            <p>Description of feature 3</p>
         </div>
     </div>
     <div class="row footer">

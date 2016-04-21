@@ -1,0 +1,193 @@
+
+.navbar-brand img {
+    height: 4rem;
+    margin: -1rem 1rem 0;
+    display: inline-block;
+}
+
+.navbar-btn {
+    margin-right: 1.5rem;
+}
+
+.navbar-brand * {
+    color: #2a92dd;
+}
+
+.buttons {
+	margin: 25px 3px;	
+	back: #00008B;
+}
+
+.front-bg {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient( rgba(250, 250, 250, 0.8), rgba(250, 250, 250, 0.8)), url('images/bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.center-screen {
+    text-align: center;
+    padding-top: 50%;
+    transform: translateY(-50%);
+}
+
+h1 {
+    font-weight: bold;
+    margin: 0.5rem 0;
+    color: #444;
+    font-size: 8rem;
+}
+
+h2 {
+    margin: 0.5rem 0;
+    font-size: 2.6rem;
+}
+
+.features .fa {
+    font-size: 7rem;
+}
+
+.features {
+    text-align: center;
+    padding: 5rem 0;
+}
+
+.footer {
+    text-align: center;
+    background: #4183D7;
+    padding-bottom: 2.5rem;
+}
+
+.footer h4 {
+    color: white;
+    font-weight: bold;
+    padding: 1.5rem 0 0;
+}
+
+.footer p {
+    color: white;
+    margin: 0;
+}
+
+.social p {
+    display: inline-block;
+    padding: 1rem 1rem 0;
+    font-size: 1.5rem;
+}
+
+.social a {
+    color: white;
+    text-decoration: underline;
+}
+
+.social .fa {
+    padding-right: 7.5px;
+}
+
+.alert {
+	margin-top: 1rem;
+}
+
+.modal input {
+	padding: 0.25rem 1rem !important;
+}
+
+#createButton {
+	width: 100%;
+}
+
+#dropdownMenu1 {
+    border-radius: 0;
+    border-color: #ddd;
+    box-shadow: none;
+}
+
+.btn-side {
+	margin-bottom: 1.5rem;
+}
+
+.img-thumbnail {
+	margin-top: 70px;
+}
+.modal-body {
+	color: #2a92dd;
+}
+.modal-header {
+	color: white;
+	background-color: black;
+}
+.modal-footer {
+	background-color: black;
+}
+.attachment{
+position: absolute;
+right: 0px;
+width: 300px;
+}
+.fileContainer {
+	display: none;
+}
+
+.btn-side {
+	margin-bottom: 1.5rem;
+	text-align: left;
+	text-transform: none;
+}
+
+.updates {
+	margin-top: -5px;
+	display: block;
+}
+
+.updates button {
+	text-transform: none;
+	color: #333;
+}
+
+.updates .fa {
+	padding-right: 5px;
+}
+
+.buttons {
+	margin-top: 20px;
+}
+
+.btn-grid {
+	margin-top: 70px;
+	border-margin: 5px;
+	height: 455px;
+}
+
+.img-thumbnail {
+	margin-top: 70px;
+}
+
+.updates button {
+    margin-top: 20px
+    margin: 0 1%;
+}
+
+.btn-side .fa {
+    padding-right: 10px;
+}
+
+.storage-capacity {
+	margin-top: 4rem;
+}
+
+.panel {
+	overflow-y: scroll;
+}
+
+.panel p {
+	padding-top: 2rem;
+	font-weight: bold;
+}
+
+.apart {
+	padding-top: 0px;
+}
+
+.form-horizontal {
+	position: center;
+}

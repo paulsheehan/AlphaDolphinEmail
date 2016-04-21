@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Alpha Dolphin</title>
+    <link rel="stylesheet" href="https://bootswatch.com/paper/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<!-- Modal for Logout -->
+	<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+		
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Are you sure you want to finish your session?</h4>
+						<form action="FrontController" method=post">
+							<input type="hidden" name="action" value="UserLogout">
+						</form>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" id=logout" class="btn btn-success" data-dismiss="modal">Yes</button>
+					<button type="button" class="btn btn-danger">No</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Beginning of the Web Page -->
+	<nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="images/logo.png"/> <b>Dolphin</b> Your e-mail platform</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><button class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#myModal">Logout</button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+	
+	
+	<div class="container settings">
+	<!-- left part of the screen -->
+	<div class="col-md-2 left">
+			<img src="http://thesocialmediamonthly.com/wp-content/uploads/2015/08/photo.png" class="img-thumbnail" alt="Cinque Terre" width="204" height="136">
+			<div class="buttons">
+				<form action="FrontController" method="post" id="viewInbox">
+							<input type="hidden" name="action" value="ShowEmails" />
+							<input type="hidden" name="folder" value="inbox" />
+				</form>
+				<button type="submit" form="viewInbox" class="btn btn-block btn-side btn-info" data-toggle="tooltip" data-placement="bottom" title="Click here to see your list of e-mails."><i class="fa fa-envelope"></i><b>My E-mails</b></button>
+				
+				<form action="composeEmail.html" method="post" id="newEmail">
+							<input type="hidden" name="action" value="compose" />
+				</form>
+				<button type="submit" form="newEmail" class="btn btn-block btn-side btn-info" data-toggle="tooltip" data-placement="bottom" title="Click here to write e-mails."><i class="fa fa-pencil"></i><b>Write E-mails</b></button>
+				
+				<form action="FrontController" method="post" id="viewDraft">
+							<input type="hidden" name="action" value="ShowEmails" />
+							<input type="hidden" name="folder" value="draft" />
+				</form>
+				<button type="submit" form="viewDraft" class="btn btn-block btn-side btn-info" data-toggle="tooltip" data-placement="bottom" title="Click here to continue writing your unfinished e-mails."><i class="fa fa-book"></i><b>Draft E-mails</b></button>
+				
+				<form action="FrontController" method="post" id="viewTrash">
+							<input type="hidden" name="action" value="ShowEmails" />
+							<input type="hidden" name="folder" value="trash" />
+				</form>
+				<button type="submit" form="viewTrash" class="btn btn-block btn-side btn-info" data-toggle="tooltip" data-placement="bottom" title="Click here to check and recover deleted e-mails."><i class="fa fa-trash"></i><b>Bin</b></button>
+				
+				<form action="settings.html" method="post" id="toSettings">
+							<input type="hidden" name="action" value="settings" />
+				</form>
+				<button type=submit" form="toSettings" class="btn btn-block btn-side btn-info" data-toggle="tooltip" data-placement="bottom" title="Click here to manage your account."><i class="fa fa-cog"></i><b>Settings</b></button>
+
+			</div>
+			<p class="storage-capacity"><b>Storage Capacity:</b></p>
+			<div class="progress">
+				<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 75%;">
+					75%
+				</div>
+			</div>
+	</div>	
+		
+		<!-- right -->
+		<div class="col-md-10 right"> 
+				
+				
+	<!-- /.modal compose message -->
+    <div class="modal show" id="modalCompose">
+      <div class="modal-dialog">
+	  <div class="panel panel-default btn-grid ">
+				<div class="panel-body">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Compose Message</h4>
+          </div>
+          <div class="modal-body">
+            <form action="FrontController" method="post" class="form-horizontal" id="sendEmail">
+            <input type="hidden" name="action" value="SendEmail" class="form-control" name="email" ng-model="user_name">
+                <div class="form-group">
+                  <label class="col-sm-8" for="inputTo">To</label>
+                  <div class="col-sm-8">
+                  <input type="email" name="receipient" class="form-control" id="inputTo" placeholder="person@alphadolphin.com">
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label class="col-sm-8" for="inputSubject">Subject</label>
+                  <div class="col-sm-8">
+                  <input type="text" name="subject" class="form-control" id="inputSubject" placeholder="Email heading">
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label class="col-sm-8" for="inputBody">Message</label>
+				  
+                  <div class="col-sm-8">
+                  <textarea class="form-control" name="content" id="inputBody" rows="6" col="4" placeholder="Type the content here"></textarea></div>
+			   
+			   <div class="col-sm-8"><div class="fileContainer"> 
+			   	
+			   </form></div></div>
+			   
+			   	<button type="button" id="attachment"><img src="http://findicons.com/files/icons/1743/ecqlipse/128/attachment.png" height="125" width="125"></button>
+				</div>
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button> 
+            <button type="button" class="btn btn-warning pull-left">Save Draft</button>
+            <button type="submit" form="sendEmail" class="btn btn-primary ">Send <i class="fa fa-arrow-circle-right fa-lg"></i></button>
+     
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal compose message -->
+	</div>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+<script> $("#attachment").click(function() 
+{
+$("#fileUploader").click();
+});
+</script>
+</body>	
+
+</html>
+

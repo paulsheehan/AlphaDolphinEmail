@@ -22,7 +22,8 @@ import com.example.exceptions.CommandCreationException;
 public class FrontController extends HttpServlet{
 
 	public static final long serialVersionUID = 1L;
-	public static final String LOGIN_ACTION = "UserIsWelcomed";
+	public static final String LOGIN_ACTION = "UserLogin";
+	public static final String REGISTER_ACTION = "CreateUser";
 	
     public FrontController() {
         super();
@@ -41,25 +42,25 @@ public class FrontController extends HttpServlet{
 	
 	private void processRequest(HttpServletRequest request, HttpServletResponse response)
 	{
-		
-		String forwardToJsp = new String("/MainPage.html");
+		System.out.println("What");
+		String forwardToJsp = new String("/index.html");
 		String action = request.getParameter("action");
-		System.out.println(action);
-//		if ( !action.equalsIgnoreCase(LOGIN_ACTION) ){
-//
-//			//If not a login request then need to check that user is  
-//			//logged in before processing ANY requests.
-//			
-//			//Check to see if the session id coming from the client matches the id stored at login...
-//			HttpSession session = request.getSession();
-//
-//			//If user not logged in...
-//			if ( session.getId() != session.getAttribute("loggedSessionId") ){
-//				forwardToJsp = "/loginFailure.jsp";
-//				forwardToPage(request, response, forwardToJsp);
-//				return;
-//			}			
-//		}
+		
+		if ( !action.equalsIgnoreCase(LOGIN_ACTION) && !action.equalsIgnoreCase(REGISTER_ACTION) ){
+
+			//If not a login request then need to check that user is  
+			//logged in before processing ANY requests.
+			
+			//Check to see if the session id coming from the client matches the id stored at login...
+			HttpSession session = request.getSession();
+
+			//If user not logged in...
+			if ( session.getId() != session.getAttribute("loggedSessionId") ){
+				forwardToJsp = "/loginFailure.jsp";
+				forwardToPage(request, response, forwardToJsp);
+				return;
+			}			
+		}
 		
 		//Now we can process whatever the request is...
 		//We just create a Command object to handle the request...
@@ -72,7 +73,7 @@ public class FrontController extends HttpServlet{
 		} catch (CommandCreationException e) {			
 			e.printStackTrace();
 			forwardToJsp = "/errorPage.jsp";
-		}		
+		}
 		
 		forwardToPage(request, response, forwardToJsp);
 	}
